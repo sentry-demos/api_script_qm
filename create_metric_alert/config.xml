@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <data>
     <items>
-        <item name="org_name">nanditha-test-org</item>
-        <item name="auth_key">Bearer bd936f4789324c7a918104ccbfe7482d052d603f3ed946f0a7e837bc0da2602f</item>
+        <item name="org_name"></item>
+        <item name="auth_key"></item>
         <item name="owner">743358</item>
         <item name="critical">10000</item>
         <item name="warning">8000</item>
