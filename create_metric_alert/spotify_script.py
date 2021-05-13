@@ -178,7 +178,7 @@ def create_alerts(org_name, auth_key, team_id, alert_list, sleep_time, critical_
                 
             response = requests.post(
                 f'https://sentry.io/api/0/projects/nanditha-test-org/{proj_name}/alert-rules/',
-                headers={'Authorization': 'Bearer bd936f4789324c7a918104ccbfe7482d052d603f3ed946f0a7e837bc0da2602f',
+                headers={'Authorization': auth_key,
                         'Content-Type' : 'application/json'}, data=json_data)
             if(response.status_code == 200 or response.status_code == 201):
                 logging.info('Successfully created the metric alert for project: ' + proj_name)
