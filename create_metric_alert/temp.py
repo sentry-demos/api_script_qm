@@ -111,9 +111,10 @@ def create_alerts():
     proj_team_list = []
     team_list = []
     script_report = {"success": 0, "failed": 0, "exists": 0}
+    alert_rule_suffix = configs.get("ALERT_RULE_SUFFIX").data
 
     for proj_name, teams in projects_dict.items():
-        alert_name = proj_name.lower() + '_quota_limit_0515'
+        alert_name = proj_name.lower() + alert_rule_suffix
         
         if len(teams) == 0:
             script_report["failed"] += 1
