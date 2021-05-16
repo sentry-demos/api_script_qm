@@ -18,7 +18,7 @@ To setup the python env for thhis script:
 
 1. Create Alerts for All Projects
 
-    > ```python3 temp.py```
+    > ```python3 create_alerts.py```
 
 2. Delete all Alert Rules:
 
