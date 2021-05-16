@@ -1,0 +1,6 @@
+# Mac OS X
+.DS_Store
+
+alert_logfile_*
+alert_clean_logfile_*
+env*/
