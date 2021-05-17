@@ -43,4 +43,4 @@ Optional:
 ## Confirm Alert Creation
 
 1. To confirm via UI navigate to the Alerts page to view the created alerts.
-2. By running python3 create_alerts.py a second time you can confirm if the alert already exists. (Check the log file for "alert already exists for + <project name>!")
+2. By running python3 create_alerts.py a second time you can confirm if the alert already exists. (Check the log file for "alert already exists for + [project name]!")
