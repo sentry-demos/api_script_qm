@@ -25,7 +25,7 @@ Required:
 
 Optional:
 
-5. `SLEEP_TIME=<miliseconds>` = To update sleep time please provide this value in miliseconds.
+5. `SLEEP_TIME=<milliseconds>` = When updating sleep time, please provide this value in milliseconds.
 6. `ALERT_RULE_SUFFIX=_quota_limit` - If you would like to rename the alert rule suffix, this can be done in the config file. 
 
 
@@ -38,3 +38,9 @@ Optional:
 2. Delete all Alert Rules:
 
     > ```python3 clean.py```
+
+
+## Confirm Alert Creation
+
+1. To confirm via UI navigate to the Alerts page to view the created alerts.
+2. By running python3 create_alerts.py a second time you can confirm if the alert already exists. (Check the log file for "alert already exists for + <project name>!")
