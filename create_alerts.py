@@ -149,6 +149,9 @@ def create_alerts():
                     script_report["failed"] += 1
                     logging.error('create_alert: could not create alert for project: ' + proj_name)
                     logging.error(str(response.json()) + proj_name)
+                elif (response.status_code == 403):
+                    logging.error('create_alerts: received the following status code: ' + str(response.status_code) + ' \nYou may be using your user level token without the necessary permissions.  \nPlease assign the AUTH_KEY to your org level token and refer to the README on how to create one.')
+                    sys.exit()
                 else: 
                     script_report["failed"] += 1
                     logging.error('create_alert: received the following status code: ' + str(response.status_code) + ' for project: ' + proj_name)   
