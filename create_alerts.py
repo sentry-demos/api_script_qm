@@ -2,9 +2,8 @@
 import requests
 import jsons
 from xml.dom import minidom
-# import xmltodict
 import sys
-import getopt
+# import getopt
 import logging
 from datetime import datetime
 from pytz import timezone
@@ -23,6 +22,7 @@ script_report = {}
 def do_setup():
     global configs
     global headers
+    required_config_keys = ["ORG_NAME", "AUTH_KEY", "CRITICAL", "WARNING", "SLEEP_TIME", "ALERT_RULE_SUFFIX"]
     try:
         # Init logger
         current_datetime = datetime.now().strftime('%m-%d-%Y_%I:%M:%S %Z')
@@ -33,21 +33,35 @@ def do_setup():
         # Read configuration
         with open('config.properties', 'rb') as config_file:
             configs.load(config_file)
-        
+
+        keys = configs.__dict__
+        keys = keys['_key_order']
+       
+        diff = [i for i in required_config_keys + keys if i not in required_config_keys or i not in keys]
+        result = len(diff) == 0
+        if not result:
+            #print(diff)
+            logging.error(f'These config {len(diff)} key(s) are missing from config file: {diff[:5]}')
+            sys.exit()
+
+        # for item in required_config_keys:
+        #     if item not in keys:
+        #         print(item)
+        #         logging.error(item + ' is a missing key in your config file.')
+        #         logging.error()
+                
+      
+        for key, value in configs.items():
+            if(value.data == ''):
+                logging.error('Value for ' + key + ' is missing.')
+                sys.exit()
+            
+
         # Init request headers
         headers = {'Authorization': "Bearer " + configs.get("AUTH_KEY").data, 'Content-Type' : 'application/json'}
     except Exception as e: 
-        print(f'failed to setup - {e}')
+        print(f'do_setup: failed to setup - {e}')
         sys.exit()
-
-
-# TODO: is it needed?  Where is this used?
-def check_threshold():
-    if int(configs.get("WARNING").data) >= int(configs.get("CRITICAL").data):
-        logging.error('warning threshold should not be greater than critical threshold. Please fix assigned values.')
-        sys.exit()
-    else:
-        logging.info('this is correct')
 
     
 def get_alerts(): 
@@ -61,7 +75,7 @@ def get_alerts():
             response = requests.get(response.links["next"]["url"], headers = headers)
             store_alerts(response.json())   
     except Exception as e:
-        print(f'failed to call alert rules api - {e}')
+        print(f'get_alerts: failed to call alert rules api - {e}')
         sys.exit()
 
 
@@ -83,7 +97,7 @@ def get_projects():
             response = requests.get(response.links["next"]["url"], headers = headers)
             store_projects(response.json()) 
     except Exception as e:
-        logging.error(f'unable to do get request - {e}')
+        logging.error(f'get_project: unable to do get request - {e}')
         sys.exit()
 
 
@@ -100,7 +114,7 @@ def store_projects(json_data):
                 team_id = team["id"]
                 projects_dict[project_name].append(team_id)
         except Exception as e:
-            logging.error(f'create_alert: could not get existing project names - {e}')
+            logging.error(f'create_project: could not get existing project names - {e}')
 
 
 def create_alerts():
@@ -130,14 +144,14 @@ def create_alerts():
 
                 if(response.status_code in [200, 201]):
                     script_report["success"] += 1
-                    logging.info('Successfully created the metric alert ' + alert_name + ' for project: ' + proj_name)
+                    logging.info('create_alert: Successfully created the metric alert ' + alert_name + ' for project: ' + proj_name)
                 elif (response.status_code == 400):
                     script_report["failed"] += 1
                     logging.error('create_alert: could not create alert for project: ' + proj_name)
                     logging.error(str(response.json()) + proj_name)
                 else: 
                     script_report["failed"] += 1
-                    logging.error('received the following status code: ' + str(response.status_code) + ' for project: ' + proj_name)   
+                    logging.error('create_alert: received the following status code: ' + str(response.status_code) + ' for project: ' + proj_name)   
 
             except Exception as e:
                 script_report["failed"] += 1
@@ -147,7 +161,7 @@ def create_alerts():
 
         else:
             script_report["exists"] += 1
-            logging.info('alert already exists for project ' + proj_name + '!') 
+            logging.info('create_alert: alert already exists for project ' + proj_name + '!') 
 
 def build_alert_json(proj_name_lower, alert_name, teams):
     critical_actions = []
