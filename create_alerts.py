@@ -22,6 +22,7 @@ script_report = {}
 def do_setup():
     global configs
     global headers
+    global current_datetime
     required_config_keys = ["ORG_NAME", "AUTH_KEY", "CRITICAL", "WARNING", "SLEEP_TIME", "ALERT_RULE_SUFFIX"]
     try:
         # Init logger
@@ -142,7 +143,7 @@ def create_alerts():
                             f'https://sentry.io/api/0/projects/{configs.get("ORG_NAME").data}/{proj_name}/alert-rules/',
                             headers = headers, 
                             data=json_data)
-                            
+
                 if(response.status_code in [200, 201]):
                     script_report["success"] += 1
                     logging.info('create_alert: Successfully created the metric alert ' + alert_name + ' for project: ' + proj_name)
@@ -189,7 +190,8 @@ def main(argv):
     global configs
     global headers
     global script_report
-    
+    global current_datetime
+
     do_setup()    
     get_alerts()
     get_projects()
@@ -197,7 +199,7 @@ def main(argv):
 
     # Print final script status
     print("Script report:  ", script_report)
-    print("Check log file for details.")
+    print(f"Check log file alert_logfile_{current_datetime}.log for details.")
     
 if __name__ == '__main__':
      main(sys.argv[1:])
