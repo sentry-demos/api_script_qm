@@ -25,7 +25,7 @@ Required:
 
 Optional:
 
-5. `SLEEP_TIME=<milliseconds>` = When updating sleep time, please provide this value in milliseconds.
+5. `SLEEP_TIME=<milliseconds>` - When updating sleep time, please provide this value in milliseconds.
 6. `ALERT_RULE_SUFFIX=_quota_limit` - If you would like to rename the alert rule suffix, this can be done in the config file. 
 
 
