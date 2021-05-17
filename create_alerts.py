@@ -127,6 +127,7 @@ def create_alerts():
     script_report = {"success": 0, "failed": 0, "exists": 0}
     alert_rule_suffix = configs.get("ALERT_RULE_SUFFIX").data
 
+    print('about to create alerts..')
     for proj_name, teams in projects_dict.items():
         alert_name = proj_name.lower() + alert_rule_suffix
         
@@ -141,7 +142,7 @@ def create_alerts():
                             f'https://sentry.io/api/0/projects/{configs.get("ORG_NAME").data}/{proj_name}/alert-rules/',
                             headers = headers, 
                             data=json_data)
-
+                            
                 if(response.status_code in [200, 201]):
                     script_report["success"] += 1
                     logging.info('create_alert: Successfully created the metric alert ' + alert_name + ' for project: ' + proj_name)
@@ -196,6 +197,7 @@ def main(argv):
 
     # Print final script status
     print("Script report:  ", script_report)
+    print("Check log file for details.")
     
 if __name__ == '__main__':
      main(sys.argv[1:])
