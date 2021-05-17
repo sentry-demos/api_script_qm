@@ -40,3 +40,8 @@ Prior to running create_alerts.py, you can configure the following fields in the
 
 1. To confirm via UI navigate to the Alerts page to view the created alerts.
 2. By running python3 create_alerts.py a second time you can confirm if the alert already exists. (Check the log file for "alert already exists for + [project name]!")
+
+## Debugging and Logging
+
+After running the script you will see a log file created with the following naming convention - `alert_logfile_{current_datetime}.log`
+Potential error and info logs will be displayed here. 
