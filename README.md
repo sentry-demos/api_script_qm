@@ -51,4 +51,5 @@ Prior to running create_alerts.py, you can configure the following fields in the
 ## Debugging and Logging
 
 After running the script you will see a log file created with the following naming convention - `alert_logfile_{current_datetime}.log`
+
 Potential error and info logs will be displayed here. 
