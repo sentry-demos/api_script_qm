@@ -17,9 +17,14 @@ To setup the python env for this script:
 
 Prior to running create_alerts.py, configure the following fields in the config.properties file:
 
-1. `ORG_NAME= <org name> ` - This should be assigned to your Organization Slug, found under Settings --> General Settings
-3. `AUTH_KEY= <auth_key>` - Your auth key can be found under Settings --> Account --> API --> Auth Tokens
-4. `ALERT_RULE_SUFFIX=_quota_limit` - If you would like to rename the alert rule suffix, this can be done in the config file. 
+
+Required:
+1. `ORG_NAME= <org name> ` - This should be assigned to your Organization Slug, found under Settings --> General Settings.
+3. `AUTH_KEY= <auth_key>` - Your auth key can be found under Settings --> Account --> API --> Auth Tokens.
+
+Optional:
+5. `SLEEP_TIME=<miliseconds>` = To update sleep time please provide this value in miliseconds.
+6. `ALERT_RULE_SUFFIX=_quota_limit` - If you would like to rename the alert rule suffix, this can be done in the config file. 
 
 
 ## Run Script 
