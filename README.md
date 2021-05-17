@@ -57,3 +57,7 @@ Prior to running create_alerts.py, you can configure the following fields in the
 After running the script you will see a log file created with the following naming convention - `alert_logfile_{current_datetime}.log`
 
 Potential error and info logs will be displayed here. 
+
+## Reminder
+
+To successfully create a metric alert make sure each project has at least one team assigned to it! 
