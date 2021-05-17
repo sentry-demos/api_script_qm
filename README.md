@@ -17,15 +17,11 @@ To setup the python env for this script:
 
 Prior to running create_alerts.py, you can configure the following fields in the config.properties file:
 
-
-Required:
-
 1. `ORG_NAME= <org name> ` - This should be assigned to your Organization Slug, found under Settings --> General Settings.
-3. `AUTH_KEY= <auth_key>` - Your auth key can be found under Settings --> Account --> API --> Auth Tokens.
-
-Optional:
-
-5. `SLEEP_TIME=<milliseconds>` - When updating sleep time, please provide this value in milliseconds.
+2. `AUTH_KEY= <auth_key>` - Your auth key can be found under Settings --> Account --> API --> Auth Tokens.
+3. `CRITICAL=10000` - Critical threshold is set in the config file. No need to modify this value. 
+4. `WARNING=8000` - Warning threshold is set in the config file. No need to modify this value. 
+. `SLEEP_TIME=<milliseconds>` - When updating sleep time, please provide this value in milliseconds.
 6. `ALERT_RULE_SUFFIX=_quota_limit` - If you would like to rename the alert rule suffix, this can be done in the config file. 
 
 
