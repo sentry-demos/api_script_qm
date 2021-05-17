@@ -19,14 +19,14 @@ Prior to running create_alerts.py, you can configure the following fields in the
 
 1. `ORG_NAME= <org name> ` - This should be assigned to your Organization Slug, found under Settings --> General Settings.
 
-2. `AUTH_KEY= <auth_key>` - Your **org level** auth key can be found under Settings --> Developer Settings --> Internal Integrations
+2. `AUTH_KEY= <auth_key>` - Your **org level** auth key can be found under Settings --> Developer Settings --> Internal Integrations.
 
     a. If you don't have Internal Integrations set up, select New Internal Integrations and provide a Name for your integration. 
 
     b. The following permissions should be set to Admin. 
     <img width="956" alt="Screen Shot 2021-05-17 at 1 40 03 PM" src="https://user-images.githubusercontent.com/82904656/118553624-64e72c00-b715-11eb-8862-fb343b3c9d24.png">
     
-    c. Once the above fields have been configured, click on Save Changes
+    c. Once the above fields have been configured, click on Save Changes.
 
     d. This should redirect you to your Internal Integrations page with a token. This token is your **org level** auth key. 
 
