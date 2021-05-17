@@ -23,8 +23,8 @@ Prior to running create_alerts.py, you can configure the following fields in the
 
     a. If you don't have Internal Integrations set up, select New Internal Integrations and provide a Name for your integration. 
 
-    b. The following permissions should be set to Admin. 
-    <img width="956" alt="Screen Shot 2021-05-17 at 1 40 03 PM" src="https://user-images.githubusercontent.com/82904656/118553624-64e72c00-b715-11eb-8862-fb343b3c9d24.png">
+    b. The following permissions should be set to Read & Write. 
+    <img width="957" alt="Screen Shot 2021-05-17 at 2 29 02 PM" src="https://user-images.githubusercontent.com/82904656/118559227-7849c580-b71c-11eb-83ea-2b7fcdbe9461.png">
     
     c. Once the above fields have been configured, click on Save Changes.
 
